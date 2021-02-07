@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE suite SYSTEM "https://testng.org/testng-1.0.dtd">
+<suite name="Suite" parallel="tests" configfailurepolicy="continue">
+    <listeners>
+        <listener class-name="com.amilus.backbaseqa.base.Listener"/>
+    </listeners>
+
+    <test name="Sign Up">
+        <classes>
+            <class name="com.amilus.backbaseqa.cases.SignUpSettings">
+            </class>
+        </classes>
+    </test>
+
+    <test name="Sign In">
+        <classes>
+            <class name="com.amilus.backbaseqa.cases.SignInProfileArticleEditor">
+            </class>
+        </classes>
+    </test>
+
+    <test name="Api Testing">
+            <classes>
+                <class name="com.amilus.backbaseqa.apitesting.ApiTests">
+                </class>
+            </classes>
+    </test>
+
+</suite>
