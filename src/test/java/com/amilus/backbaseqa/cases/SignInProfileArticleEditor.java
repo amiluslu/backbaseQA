@@ -11,7 +11,7 @@ import org.testng.Assert;
 import org.testng.annotations.Test;
 
 
-public class SignInCase extends TestBase {
+public class SignInProfileArticleEditor extends TestBase {
 
     SignUpPage signUpPage = new SignUpPage();
     EditorPage editorPage = new EditorPage();

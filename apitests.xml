@@ -5,20 +5,6 @@
         <listener class-name="com.amilus.backbaseqa.base.Listener"/>
     </listeners>
 
-    <test name="Sign Up">
-        <classes>
-            <class name="com.amilus.backbaseqa.cases.SignUpSettings">
-            </class>
-        </classes>
-    </test>
-
-    <test name="Sign In">
-        <classes>
-            <class name="com.amilus.backbaseqa.cases.SignInProfileArticleEditor">
-            </class>
-        </classes>
-    </test>
-
     <test name="Api Testing">
             <classes>
                 <class name="com.amilus.backbaseqa.apitesting.ApiTests">

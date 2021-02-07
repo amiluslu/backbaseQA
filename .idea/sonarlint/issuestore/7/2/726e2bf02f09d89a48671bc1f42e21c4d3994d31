@@ -1,0 +1,17 @@
+
+t	java:S116"_Rename this field "default_pageLoadWait" to match the regular expression '^[a-z][a-zA-Z0-9]*$'.(ø•„ê
+h
+java:S3008"MRename this field "OS" to match the regular expression '^[a-z][a-zA-Z0-9]*$'.(ã—¢Ùûÿÿÿÿ
+£
+java:S1186+"€Add a nested comment explaining why this method is empty, throw an UnsupportedOperationException or complete the implementation.(ÑÀÔäıÿÿÿÿ8ÉÛÏáö.
+œ
+java:S1186%"€Add a nested comment explaining why this method is empty, throw an UnsupportedOperationException or complete the implementation.(ÊÁ‘èüÿÿÿÿ
+T	java:S8998"@Do something with the "boolean" value returned by "setReadable".(Éö¥R
+G
+java:S1444",Make this "public static driver" field final(ÜçÁÈûÿÿÿÿ
+Z	java:S8999"@Do something with the "boolean" value returned by "setWritable".(ö¤ìÔşÿÿÿÿ
+m
+java:S1104"RMake driver a static final constant or non-public and provide accessors if needed.(ÜçÁÈûÿÿÿÿ
+L
+java:S2696"6Make the enclosing method "static" or remove this set.(Î°¸ó
+\	java:S8997"BDo something with the "boolean" value returned by "setExecutable".(ñù”‡úÿÿÿÿ

@@ -19,11 +19,4 @@
         </classes>
     </test>
 
-    <test name="Api Testing">
-            <classes>
-                <class name="com.amilus.backbaseqa.apitesting.ApiTests">
-                </class>
-            </classes>
-    </test>
-
 </suite>

@@ -12,7 +12,7 @@ import java.util.Locale;
 import java.util.concurrent.TimeUnit;
 
 
-public class SignUpCase extends TestBase {
+public class SignUpSettings extends TestBase {
 
     private SignUpPage signUpPage = new SignUpPage();
     private HomePage homePage = new HomePage();

@@ -1,0 +1,18 @@
+
+U	java:S1069"9Replace this use of System.out or System.err by a logger.(‡©‹’8ä®äö.
+Z	java:S106-"9Replace this use of System.out or System.err by a logger.(ÚõÙ’ùÿÿÿÿ8ä®äö.
+U	java:S106'"9Replace this use of System.out or System.err by a logger.(®êÆœ8ä®äö.
+r
+java:S1104"PMake test a static final constant or non-public and provide accessors if needed.(Ñ…ıÅúÿÿÿÿ8Ô”¶åö.
+L
+java:S1444"*Make this "public static test" field final(Ñ…ıÅúÿÿÿÿ8Ô”¶åö.
+U	java:S106 "9Replace this use of System.out or System.err by a logger.(ş—ë8ä®äö.
+U	java:S106"9Replace this use of System.out or System.err by a logger.(Ï©œÄ8ä®äö.
+G
+java:S11811"%Catch Exception instead of Throwable.(•”ø¾øÿÿÿÿ8ƒ¢—æö.
+Z	java:S106?"9Replace this use of System.out or System.err by a logger.(¹ÊÌßÿÿÿÿÿ8ä®äö.
+R
+java:S1128"0Remove this unused import 'java.io.IOException'.(ªº»Úıÿÿÿÿ8ƒ¢—æö.
+T	java:S106"9Replace this use of System.out or System.err by a logger.(Î¶\8ä®äö.
+t
+java:S1128"RRemove this unused import 'com.aventstack.extentreports.MediaEntityModelProvider'.(¦ô¨Õşÿÿÿÿ8Ï§ïæö.

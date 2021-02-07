@@ -1,0 +1,19 @@
+
+‚
+java:S1488V"fImmediately return this expression instead of assigning it to the temporary variable "actualUsername".(•ªÜ8±¼æåö.
+[
+java:S1155K">Use isEmpty() to check whether the collection is empty or not.(è×Ÿ8Ê´¯âö.
+H
+java:S1168O"+Return an empty collection instead of null.(¥¹ï8ˆ™¸âö.
+F
+java:S2387"+"log" is the name of a field in "BasePage".(ƒÀëëıÿÿÿÿ
+9
+java:S2629)"$Invoke method(s) only conditionally.(Ãù¬q
+?
+java:S26299"$Invoke method(s) only conditionally.(ßãŠáÿÿÿÿÿ
+l
+java:S1128"JRemove this unused import 'com.amilus.backbaseqa.reporting.ReportFactory'.(—˜–¤úÿÿÿÿ8†Û¯åö.
+F
+java:S2140")Use "java.util.Random.nextInt()" instead.(™†Ş…8ï«–âö.
+K
+java:S1128".Remove this unused import 'org.testng.Assert'.(Ø£ÿ§8ÿæ¯Şö.

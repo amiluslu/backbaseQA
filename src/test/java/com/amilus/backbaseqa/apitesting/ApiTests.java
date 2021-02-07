@@ -1,5 +1,6 @@
 package com.amilus.backbaseqa.apitesting;
 
+import com.amilus.backbaseqa.base.Listener;
 import com.amilus.backbaseqa.base.WsTestBase;
 import com.amilus.backbaseqa.models.User;
 import com.amilus.backbaseqa.pages.SignUpPage;
@@ -11,7 +12,7 @@ import io.restassured.response.Response;
 import org.testng.Assert;
 import org.testng.annotations.Test;
 
-public class Users extends WsTestBase {
+public class ApiTests extends WsTestBase {
 
     String tokenGenerated;
 
@@ -19,17 +20,19 @@ public class Users extends WsTestBase {
     public void authentication(){
         Gson gson = new Gson();
         UserPojo userPojo = new UserPojo();
-        User user = User.getUserFromJson();
+        User user = new User();
         user.setEmail("amilus@amilus.com");
         user.setPassword("amiluslu3458");
         userPojo.setUser(user);
         String body = gson.toJson(userPojo);
         Response response = REQUEST.body(body).when().post("/api/users/login");
-        if(response.statusCode() == 200){
+        if( (response.statusCode() >= 200) && (response.statusCode() <=299)) {
             String jsonString = response.getBody().asString();
             tokenGenerated = JsonPath.parse(jsonString).read("$.user.token");
+            Listener.test.get().pass("Authentication is successful. Token: "+tokenGenerated);
         }
         else {
+            Listener.test.get().fail("Error Occurred: "+response.getBody());
             response.prettyPrint();
             Assert.fail("Error occured: "+response.getBody());
         }
@@ -39,27 +42,43 @@ public class Users extends WsTestBase {
     public void registration(){
         Gson gson = new Gson();
         UserPojo userPojo = new UserPojo();
-        User user = User.getUserFromJson();
+        User user = new User();
         user.setEmail(randomStringGenerator()+"@"+randomStringGenerator()+".com");
         user.setUsername(randomStringGenerator());
         user.setPassword("amiluslu3458");
         userPojo.setUser(user);
         String body = gson.toJson(userPojo);
-        REQUEST.body(body).when().post("/api/users").then().statusCode(200);
+        Response response = REQUEST.body(body).when().post("/api/users");
+        if( (response.statusCode() >= 200) && (response.statusCode() <=299)) {
+            Listener.test.get().pass("Registration is successful. "+response.getBody());
+        }
+        else {
+            Listener.test.get().fail("Error Occurred: "+response.getBody());
+            response.prettyPrint();
+            Assert.fail("Error occured: "+response.getBody());
+        }
     }
 
     @Test (priority = 2,dependsOnMethods = "authentication")
     public void getUser(){
         REQUEST.auth().basic("candidatex","qa-is-cool").header("Authorization","Bearer "+tokenGenerated)
                 .header("Content-Type","application/json;charset=UTF-8");
-        REQUEST.get("/api/user").then().statusCode(200);
+        Response response = REQUEST.get("/api/user");
+        if( (response.statusCode() >= 200) && (response.statusCode() <=299)) {
+            Listener.test.get().pass("getUser is successful. "+response.getBody());
+        }
+        else {
+            Listener.test.get().fail("Error Occurred: "+response.getBody());
+            response.prettyPrint();
+            Assert.fail("Error occured: "+response.getBody());
+        }
     }
 
     @Test (priority = 3,dependsOnMethods = "authentication")
     public void updateUser(){
         Gson gson = new Gson();
         UserPojo userPojo = new UserPojo();
-        User user = User.getUserFromJson();
+        User user = new User();
         user.setEmail("amilus@amilus.com");
         user.setBio("bio sertay");
         user.setImage("image isil");
@@ -67,12 +86,28 @@ public class Users extends WsTestBase {
         String body = gson.toJson(userPojo);
         REQUEST.header("Authorization","Bearer "+tokenGenerated)
                 .header("Content-Type","application/json");
-        REQUEST.body(body).when().put("/api/user").then().statusCode(201);
+        Response response = REQUEST.body(body).when().put("/api/user");
+        if( (response.statusCode() >= 200) && (response.statusCode() <=299)) {
+            Listener.test.get().pass("updateUser is successful. "+response.getBody());
+        }
+        else {
+            Listener.test.get().fail("Error Occurred: "+response.getBody());
+            response.prettyPrint();
+            Assert.fail("Error occured: "+response.getBody());
+        }
     }
 
     @Test (priority = 4,dependsOnMethods = "authentication")
     public void getProfile(){
-        REQUEST.get("/api/profiles/amilus").then().statusCode(200);
+        Response response = REQUEST.get("/api/profiles/amilus");
+        if( (response.statusCode() >= 200) && (response.statusCode() <=299)) {
+            Listener.test.get().pass("getProfile is successful. "+response.getBody());
+        }
+        else {
+            Listener.test.get().fail("Error Occurred: "+response.getBody());
+            response.prettyPrint();
+            Assert.fail("Error occured: "+response.getBody());
+        }
     }
 
     @Test (priority = 5,dependsOnMethods = "authentication")
@@ -80,39 +115,28 @@ public class Users extends WsTestBase {
         REQUEST.header("Authorization","Bearer "+tokenGenerated)
                 .header("Content-Type","application/json");
         Response response = REQUEST.post("/api/profiles/amilus/follow");
-        response.prettyPrint();
+        if( (response.statusCode() >= 200) && (response.statusCode() <=299)) {
+            Listener.test.get().pass("followUser is successful. "+response.getBody());
+        }
+        else {
+            Listener.test.get().fail("Error Occurred: "+response.getBody());
+            response.prettyPrint();
+            Assert.fail("Error occured: "+response.getBody());
+        }
     }
 
-//    @Test (priority = 2,dependsOnMethods = "authentication")
-//    public void unfollowUser(){
-//        REQUEST.header("Authorization","Bearer "+tokenGenerated)
-//                .header("Content-Type","application/json");
-//        Response response = REQUEST.auth().oauth2(tokenGenerated).post("/api/profiles/amilus/follow");
-//        response.prettyPrint();
-//    }
-
-//    @Test (priority = 2,dependsOnMethods = "authentication")
-//    public void listArticles(){
-//        Response response = REQUEST.get("/api/articles");
-//        response.prettyPrint();
-//    }
-
-//    @Test (priority = 2,dependsOnMethods = "authentication")
-//    public void feedArticles(){
-//        String amil = "{\n" +
-//                "  \"article\": {\n" +
-//                "    \"title\": \"How to train your dragon\",\n" +
-//                "    \"description\": \"Ever wonder how?\",\n" +
-//                "    \"body\": \"You have to believe\",\n" +
-//                "    \"tagList\": [\"magic\", \"cool\", \"dragons\"]\n" +
-//                "  }\n" +
-//                "}";
-//
-//        REQUEST.header("Authorization","Bearer "+tokenGenerated)
-//                .header("Content-Type","application/json;charset=utf-8");
-//        Response response = REQUEST.body(amil).post("/api/articles");
-//        response.prettyPrint();
-//    }
-
-
+    @Test (priority = 6,dependsOnMethods = "authentication")
+    public void unfollowUser(){
+        REQUEST.header("Authorization","Bearer "+tokenGenerated)
+                .header("Content-Type","application/json");
+        Response response = REQUEST.delete("/api/profiles/amilus/follow");
+        if( (response.statusCode() >= 200) && (response.statusCode() <=299)) {
+            Listener.test.get().pass("unfollowUser is successful. "+response.getBody());
+        }
+        else {
+            Listener.test.get().fail("Error Occurred: "+response.getBody());
+            response.prettyPrint();
+            Assert.fail("Error occured: "+response.getBody());
+        }
+    }
 }
